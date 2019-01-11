@@ -10,10 +10,17 @@ public class Permutation {
 		this.word = word;
 	}
 
+	//Hash Calculation based on Java String HashCode()
 	@Override
 	public int hashCode() {
-		// TBD: implement this method
-		return 0;
+		int hash = 0;
+		char[] chars = getNormalized().toCharArray();
+		for(int i = 0; i < chars.length; i++) {
+			for(int l = chars.length; l > 0; l--) {
+				hash += Math.pow(chars[i] * 31, l-1);
+			}
+		}
+		return hash;
 	}
 
 	@Override
