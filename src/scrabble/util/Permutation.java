@@ -1,9 +1,13 @@
 package scrabble.util;
 
 
+import java.util.Arrays;
+
 public class Permutation {
+	private String word;
 
 	public Permutation(String word) {
+		this.word = word;
 	}
 
 	@Override
@@ -14,7 +18,9 @@ public class Permutation {
 
 	@Override
 	public boolean equals(Object obj) {
-		//TBD: Implement equals method
+		if(obj instanceof Permutation) {
+			return getNormalized().equals(((Permutation) obj).getNormalized());
+		}
 		return false;
 	}
 
@@ -23,19 +29,19 @@ public class Permutation {
 		return getWord() + " / " + getNormalized();
 	}
 
+	//sorts the char array in alphabetical order
 	public String getNormalized() {
-		// TBD: implement this method
-		return null;
+		char[] chars = word.toCharArray();
+		Arrays.sort(chars);
+		return new String(chars);
 	}
 
 	public String getWord() {
-		// TBD: implement this method
-		return null;
+		return word;
 	}
 
 	public int length() {
-		// TBD: implement this method
-		return 0;
+		return word.length();
 	}
 
 }
